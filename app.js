@@ -1,16 +1,43 @@
 const myLibrary = []
 
+const dialog = document.querySelector("#book-modal")
+const openButton = document.querySelector("#open-book-modal")
+const closeButton = document.querySelector("#close-book-modal")
+
+openButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+closeButton.addEventListener("click", ()=> {
+    dialog.close();
+})
+
+const confirmButton = document.querySelector(".submit-new-book")
+
+function addBookToLibrary(title, author, pages) {
+    const book = new Book(title, author, pages)
+    myLibrary.push(book)
+ }
+
+confirmButton.addEventListener("click", () => {
+    const bookTitle = document.querySelector("#Title").value
+    const bookAuthor = document.querySelector("#Author").value
+    const bookPages = document.querySelector("#Pages").value
+    dialog.close()
+    console.log(bookTitle + bookAuthor + bookPages)
+    document.querySelectorAll(".card").forEach(function(element) {
+        element.remove()
+    })
+    addBookToLibrary(bookTitle, bookAuthor, bookPages)
+    displayAllBooks()
+
+})
+
 function Book(title, author, pages) {
     this.title = title
     this.author = author
     this.pages = pages
 }
- function addBookToLibrary(title, author, pages) {
-    const book = new Book(title, author, pages)
-    myLibrary.push(book)
- }
-
-addBookToLibrary("hp", "jk", 69)
 
  cardContainer = document.querySelector(".card-container");
 
@@ -24,5 +51,8 @@ addBookToLibrary("hp", "jk", 69)
     }
  }
 
- displayAllBooks()
 
+
+
+
+ 

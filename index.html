@@ -9,7 +9,25 @@
 </head>
 <body>
     <div>
-        <button>
+        <dialog id="book-modal">
+            <div>
+                <form action="">
+                    <label for="Author">Author:</label><br>
+                    <input type="text" name="author" id="Author"><br>
+                    <label for="Title">Title</label><br>
+                    <input type="text" name="title" id="Title"><br>
+                    <label for="Pages">Pages</label><br>
+                    <input type="text" name="pages" id="Pages"><br>
+                </form>
+            </div>
+            <div>
+                <input type="submit" value="Confirm" class="submit-new-book">
+                <button id="close-book-modal">
+                    Cancel
+                </button>
+            </div>
+        </dialog>
+        <button id="open-book-modal">
             Add New Book
         </button>
     </div>
