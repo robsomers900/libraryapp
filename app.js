@@ -30,7 +30,9 @@ confirmButton.addEventListener("click", () => {
     })
     addBookToLibrary(bookTitle, bookAuthor, bookPages)
     displayAllBooks()
-
+    document.querySelector("#Title").value = ""
+    document.querySelector("#Author").value = ""
+    document.querySelector("#Pages").value = ""
 })
 
 function Book(title, author, pages) {
