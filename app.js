@@ -47,8 +47,15 @@ function Book(title, author, pages) {
     for(index = 0; index < myLibrary.length; index ++) {
         const card = document.createElement("div")
         card.classList.add("card")
-        let text = 'Title: ' + myLibrary[index].title + '<br>' + 'Author: ' + myLibrary[index].author + '<br>' + 'Pages: ' + myLibrary[index].pages
+        let text = 'Title: ' + myLibrary[index].title + '<br>' + 'Author: ' + myLibrary[index].author + '<br>' + 'Pages: ' + myLibrary[index].pages +'<br>'
         card.innerHTML = text
+        const removeCard = document.createElement("button")
+        card.appendChild(removeCard)
+        removeCard.innerHTML = "Delete"
+        removeCard.addEventListener("click", () => {
+            card.remove()
+            myLibrary.splice(index, 1)
+        })
         cardContainer.appendChild(card)
     }
  }

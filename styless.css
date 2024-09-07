@@ -20,7 +20,6 @@
     transition: .4s;
     overflow: hidden;
     color: white;
-    white-space: pre-line;
   }
 
   .card:hover {
