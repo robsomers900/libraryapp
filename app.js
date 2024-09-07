@@ -39,15 +39,17 @@ function Book(title, author, pages) {
     this.title = title
     this.author = author
     this.pages = pages
+    this.status = "Read"
 }
 
  cardContainer = document.querySelector(".card-container");
 
  function displayAllBooks() {
-    for(index = 0; index < myLibrary.length; index ++) {
+    cardContainer.innerHTML = ""
+    myLibrary.forEach((book, index) => {
         const card = document.createElement("div")
         card.classList.add("card")
-        let text = 'Title: ' + myLibrary[index].title + '<br>' + 'Author: ' + myLibrary[index].author + '<br>' + 'Pages: ' + myLibrary[index].pages +'<br>'
+        let text = 'Title: ' + book.title + '<br>' + 'Author: ' + book.author + '<br>' + 'Pages: ' + book.pages +'<br>' + book.status + '<br>'
         card.innerHTML = text
         const removeCard = document.createElement("button")
         card.appendChild(removeCard)
@@ -57,7 +59,15 @@ function Book(title, author, pages) {
             myLibrary.splice(index, 1)
         })
         cardContainer.appendChild(card)
-    }
+        const statusButton = document.createElement("button")
+        card.appendChild(statusButton)
+        statusButton.innerHTML = book.status === "Read" ? "Not Read":"Read"
+        statusButton.addEventListener("click", () => {
+            myLibrary[index].status = book.status === "Read" ? "Not Read": "Read"
+            displayAllBooks()
+        })
+    })
+
  }
 
 
